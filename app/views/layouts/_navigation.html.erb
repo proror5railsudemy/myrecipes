@@ -40,7 +40,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_chef.chefname.capitalize %>'s Profile <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_chef.chefname.capitalize %>'s Profile <%= "Admin" if current_chef.admin? %><span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><%= link_to "View your profile", chef_path(current_chef) %></li>
               <li><%= link_to "Edit your profile", edit_chef_path(current_chef) %></li>
