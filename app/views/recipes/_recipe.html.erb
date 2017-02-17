@@ -14,7 +14,7 @@
       <p>
         <span class="quiet"><small>Created <%= time_ago_in_words(recipe.created_at) %> ago by <%= recipe.chef.chefname.capitalize %>
                                                           | <%= pluralize(recipe.comments.count, 'Comment') %></small></span>
-      </p> 
+      </p>
       <% if logged_in? && (current_chef == recipe.chef || current_chef.admin?) %>
         <div class="recipe-actions">
           <%= link_to "Edit this recipe", edit_recipe_path(recipe), class: "btn btn-xs btn-warning" %>
@@ -23,6 +23,16 @@
                                         class: "btn btn-xs btn-danger" %>
         </div>
       <% end %>
+      <div class="row">
+        <div class="pull-right liking">
+          <%= link_to like_recipe_path(recipe, like: true), method: :post do %>
+            <i class="glyphicon glyphicon-thumbs-up"></i> 
+          <% end %> <%= recipe.thumbs_up_total %> || 
+          <%= link_to like_recipe_path(recipe, like: false), method: :post do %>
+            <i class="glyphicon glyphicon-thumbs-down"></i>
+          <% end %> <%= recipe.thumbs_down_total %>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>

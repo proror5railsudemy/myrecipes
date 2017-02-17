@@ -37,10 +37,13 @@ $(document).on('click', '[data-send~=message]', function(event) {
    submitMessage(event);
 });
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   $("#new_message").on("ajax:complete", function(e, data, status) {
     $('#message_content').val('');
   })
   scrollToBottom();
 });
+
+
+
 
