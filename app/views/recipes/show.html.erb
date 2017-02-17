@@ -1,6 +1,9 @@
 <%= render 'shared/page_title', title: @recipe.name %>
 
 <div class="well col-md-8 col-md-offset-2">
+  <div align="center">
+    <%= image_tag @recipe.image.url if @recipe.image? %>
+  </div>
   <h4 class="center description"><strong>Steps: </strong></h4>
   <hr />
   <%= simple_format(@recipe.description) %>
